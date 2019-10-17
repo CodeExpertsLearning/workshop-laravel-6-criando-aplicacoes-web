@@ -47,9 +47,15 @@ Route::get('products', function(){
 });
 
 //Definindo um prefixo para um grupo de rotas
-Route::prefix('admin')->group(function(){
+Route::group(['middleware' => ['auth']], function(){
 
-    Route::get('products', 'Admin\\ProductController@index');
+    Route::prefix('admin')->namespace('Admin')->group(function(){
+
+        // Route::get('products', 'Admin\\ProductController@index')->middleware('auth');
+        Route::resource('products', 'ProductController');
+
+    });
+
 });
 
 Auth::routes();
