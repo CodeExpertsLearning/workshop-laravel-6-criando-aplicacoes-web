@@ -8,7 +8,11 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    @php
+                        $url = request()->has('checkout') ? ['checkout' => true] : [];
+                    @endphp
+
+                    <form method="POST" action="{{ route('login', $url) }}">
                         @csrf
 
                         <div class="form-group row">
@@ -65,6 +69,10 @@
                             </div>
                         </div>
                     </form>
+                    <hr>
+                    <div class="text-center">
+                        <a href="{{route('register', $url)}}" class="btn btn-lg btn-success">Não Têm Conta? Crie aqui</a>
+                    </div>
                 </div>
             </div>
         </div>

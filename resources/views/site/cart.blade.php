@@ -55,5 +55,9 @@
             Cancelar Compra
         </a>
 
+        <a href="{{route('checkout.index')}}" class="btn btn-lg btn-success">
+            Concluir Compra
+        </a>
+
     </div>
 @endsection

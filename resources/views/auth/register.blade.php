@@ -6,9 +6,12 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
+                @php
+                    $url = request()->has('checkout') ? ['checkout' => true] : [];
+                @endphp
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register', $url) }}">
                         @csrf
 
                         <div class="form-group row">

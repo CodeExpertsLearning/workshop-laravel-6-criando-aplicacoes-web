@@ -68,4 +68,11 @@ Route::prefix('/cart')->name('cart.')->group(function(){
     Route::get('/cancel', 'CartController@cancel')->name('cancel');
 });
 
+Route::prefix('/checkout')->name('checkout.')->group(function(){
+
+	Route::get('/', 'CheckoutController@checkout')->name('index');
+	Route::get('/confirm', 'CheckoutController@confirm')->name('confirm');
+
+});
+
 Auth::routes();
